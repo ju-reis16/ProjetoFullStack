@@ -85,4 +85,41 @@ function Planetas() {
       diametro: "49.244 km",
     },
   ];
-  
+
+  return (
+    <div className="page">
+      <Header />
+
+      <main className="main-content">
+        <section className="page-introduction">
+          <p className="small-title">COSMOS OBSERVATORY</p>
+
+          <h1>
+            Os <span>8 planetas</span>
+          </h1>
+
+          <p>
+            Explore os planetas do Sistema Solar e conheça suas principais
+            características.
+          </p>
+        </section>
+
+        <section className="planet-grid">
+          {planetas.map((planeta) => (
+            <PlanetCard
+              key={planeta.nome}
+              imagem={planeta.imagem}
+              nome={planeta.nome}
+              tipo={planeta.tipo}
+              descricao={planeta.descricao}
+              distancia={planeta.distancia}
+              diametro={planeta.diametro}
+            />
+          ))}
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default Planetas;
