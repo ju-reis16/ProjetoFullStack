@@ -251,3 +251,107 @@ export default function LoginCadastro() {
 
               <div className="input-box">
                 <span>♙</span>
+                 <input
+                  type="text"
+                  placeholder="Nome Sobrenome"
+                  value={cadastro.nome}
+                  onChange={(e) =>
+                    setCadastro({
+                      ...cadastro,
+                      nome: e.target.value
+                    })
+                  }
+                  required
+                />
+              </div>
+
+              <label>E-MAIL</label>
+
+              <div className="input-box">
+                <span>✉</span>
+
+                <input
+                  type="email"
+                  placeholder="seu@email.com"
+                  value={cadastro.email}
+                  onChange={(e) =>
+                    setCadastro({
+                      ...cadastro,
+                      email: e.target.value
+                    })
+                  }
+                  required
+                />
+              </div>
+
+              <label>SENHA</label>
+
+              <div className="input-box">
+                <span>♙</span>
+
+                <input
+                  type="password"
+                  placeholder="Digite sua senha"
+                  value={cadastro.senha}
+                  onChange={(e) =>
+                    setCadastro({
+                      ...cadastro,
+                      senha: e.target.value
+                    })
+                  }
+                  required
+                />
+
+                <span className="eye">◉</span>
+              </div>
+
+              <label>CONFIRMAR SENHA</label>
+
+              <div className="input-box">
+                <span>♙</span>
+
+                <input
+                  type="password"
+                  placeholder="Confirme sua senha"
+                  value={cadastro.confirmarSenha}
+                  onChange={(e) =>
+                    setCadastro({
+                      ...cadastro,
+                      confirmarSenha: e.target.value
+                    })
+                  }
+                  required
+                />
+
+                <span className="eye">◉</span>
+              </div>
+
+              <button className="main-button" type="submit">
+                {carregando ? "Criando..." : "Criar conta"}
+              </button>
+
+            </form>
+
+            {mensagem && <p role="alert">{mensagem}</p>}
+
+            <p className="bottom-text">
+              Já tem uma conta?
+
+              <button
+                onClick={() => {
+                  setMensagem("");
+                  setTela("login");
+                }}
+              >
+                Entrar
+              </button>
+            </p>
+
+          </div>
+        )}
+
+      </section>
+
+    </main>
+  );
+}
