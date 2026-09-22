@@ -6,6 +6,7 @@ import Explorar from "./pages/Explorar";
 import Planetas from "./pages/Planetas";
 import SistemasEstelares from "./pages/SistemasEstelares";
 import Perfil from "./pages/Perfil";
+import Card from "./pages/Card";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/planetas" element={<Planetas />} />
         <Route path="/sistemas" element={<SistemasEstelares />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/card" element={<Card />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
