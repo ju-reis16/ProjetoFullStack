@@ -84,3 +84,50 @@ const filtros = [
     filtroSelecionado === "Todos"
       ? objetos
       : objetos.filter((objeto) => objeto.categoria === filtroSelecionado);
+
+return (
+    <div className="explorar-page">
+      <header className="explorar-header">
+        <div className="logo-area">
+          <div className="logo-icon">
+            <div className="logo-circle"></div>
+          </div>
+
+          <div className="logo-text">
+            <strong>COSMOS</strong>
+            <span>OBSERVATORY</span>
+          </div>
+        </div>
+
+        <nav className="menu">
+          <a href="#">Início</a>
+          <a href="#" className="menu-ativo">
+            Explorar
+          </a>
+          <a href="#">Planetas</a>
+          <a href="#">Sistemas</a>
+          <a href="#">Meu Perfil</a>
+        </nav>
+
+        <div className="usuario">
+          <div className="usuario-icon">EC</div>
+          <span>Elena Costa</span>
+          <span className="separador">|</span>
+          <a href="#">Sair</a>
+        </div>
+      </header>
+
+      <section className="explorar-hero">
+        <div className="hero-overlay"></div>
+
+        <div className="hero-text">
+          <span>Modo Exploração Ativo</span>
+
+          <h1>Mapa do Universo</h1>
+
+          <p>
+            Explore planetas, estrelas, galáxias e outros objetos fascinantes
+            do universo.
+          </p>
+        </div>
+      </section>
