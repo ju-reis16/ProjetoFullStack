@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#080b12;
+  color:#fff;
+  font-family:Arial,sans-serif
+}
+
+.pagina{
+  width:560px;
+  min-height:100vh;
+  margin:auto;
+  background:radial-gradient(circle at 50% 20%,#10234a 0,transparent 35%),#020713;
+  overflow:hidden
+}
+
+.cabecalho{
+  height:76px;
+  padding:0 12px;
+  display:flex;
+  align-items:center;
+  background:rgba(1,3,11,.96);
+  border-bottom:1px solid #182846
+}
+
+.logo{
+  width:145px;
+  display:flex;
+  align-items:center;
+  flex-shrink:0
+}
+
+.logoIcon{
+  width:38px;
+  color:#3974d5;
+  font-size:34px;
+  text-shadow:0 0 15px #2368d8
+}
+
+.logo h1{font:500 17px Georgia,serif;letter-spacing:1px}
+
+.logo span{
+  display:block;
+  margin-top:2px;
+  color:#667695;
+  font:6px Georgia,serif;
+  letter-spacing:1px
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex:1;
+  white-space:nowrap
+}
+
+nav a{
+  color:#cbd4e5;
+  font-size:7px;
+  text-decoration:none;
+  transition:.2s
+}
+
+nav a:hover{color:#54a9ff}
+
+nav .ativo{
+  padding:6px 8px;
+  color:#fff;
+  background:#15345f;
+  border-bottom:2px solid #2298ff;
+  border-radius:6px;
+  box-shadow:0 0 14px rgba(34,152,255,.2)
+}
+
+.perfil{
+  width:115px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:4px;
+  font-size:7px;
+  white-space:nowrap
+}
+
+.perfil b{
+  width:25px;
+  height:25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#168cff,#3856d8);
+  border-radius:50%;
+  box-shadow:0 0 14px rgba(22,140,255,.35);
+  font-size:7px
+}
+
+.perfil i{color:#68738a;font-style:normal}
+.perfil a{color:#d9e2f1;text-decoration:none}
+
+main{padding:0 14px 20px}
+
+.boasVindas{padding:16px 8px 20px}
+.boasVindas small{color:#607398;font-size:5px;letter-spacing:.5px}
+
+.boasVindas h2{
+  margin-top:6px;
+  font:normal 20px Georgia,serif
+}
+
+.boasVindas h2 span{
+  color:#6e8acb;
+  text-shadow:0 0 18px rgba(87,125,210,.3)
+}
+
+.estatisticas{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px
+}
+
+.estatisticas div{
+  height:46px;
+  padding:5px;
+  background:linear-gradient(145deg,#121f3d,#0d1730);
+  border:1px solid #1a3158;
+  border-radius:8px;
+  text-align:center;
+  transition:.2s
+}
+
+.estatisticas div:hover{
+  transform:translateY(-2px);
+  border-color:#2869b5;
+  box-shadow:0 5px 20px rgba(26,91,170,.15)
+}
+
+.estatisticas small{color:#3970e6;font-size:5px}
+.estatisticas div:nth-child(2) small{color:#c52bd1}
+.estatisticas div:nth-child(3) small{color:#00c5b0}
+.estatisticas div:nth-child(4) small{color:#17c94b}
+
+.estatisticas strong{
+  display:block;
+  margin:2px 0;
+  font:700 11px Orbitron,sans-serif
+}
+
+.estatisticas span{color:#71809e;font-size:4px}
+
+.principal{
+  display:grid;
+  grid-template-columns:1.65fr 1fr;
+  gap:6px;
+  margin-top:26px
+}
+
+.planeta,.catalogo{
+  background:linear-gradient(145deg,#06101f,#020916);
+  border:1px solid #2464a9;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,.25)
+}
+
+.planeta{
+  position:relative;
+  overflow:hidden
+}
+
+.etiquetas{
+  position:absolute;
+  z-index:3;
+  top:5px;
+  left:5px;
+  right:5px;
+  display:flex;
+  justify-content:space-between
+}
+
+.etiquetas span{
+  padding:3px 5px;
+  color:#69baff;
+  background:rgba(3,17,35,.9);
+  border:1px solid #2673bb;
+  border-radius:5px;
+  font-size:5px
+}
+
+.planeta>img{
+  width:100%;
+  height:95px;
+  object-fit:cover;
+  display:block;
+  filter:saturate(1.15)
+}
+
+.infoPlaneta{padding:6px}
+.infoPlaneta h3{font:700 8px Orbitron,sans-serif;color:#f2f6ff}
+
+.infoPlaneta p{
+  margin-top:3px;
+  color:#aeb9ca;
+  font:5px/1.4 Georgia,serif
+}
+
+.dados{
+  display:flex;
+  justify-content:space-between;
+  margin-top:7px;
+  text-align:center
+}
+
+.dados small,.dados b{display:block}
+.dados small{color:#657695;font-size:4px}
+.dados b{margin-top:2px;font-size:5px}
+
+.catalogo{padding:6px}
+
+.tituloCatalogo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+
+.tituloCatalogo h3{font:700 8px Orbitron,sans-serif}
+
+.tituloCatalogo a,.itemCatalogo a{
+  color:#4389ed;
+  font-size:5px;
+  text-decoration:none
+}
+
+.itemCatalogo{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  margin-top:6px;
+  padding-bottom:3px;
+  border-bottom:1px solid #101e34
+}
+
+.itemCatalogo:last-child{border-bottom:0}
+
+.itemCatalogo img{
+  width:20px;
+  height:20px;
+  object-fit:cover;
+  border-radius:5px
+}
+
+.itemCatalogo span{
+  flex:1;
+  color:#c1cad8;
+  font:5px Georgia,serif
+}
+
+.exploracao{
+  position:relative;
+  width:475px;
+  height:315px;
+  margin:17px auto 0;
+  background:#020817;
+  border:2px solid #2873c5;
+  border-radius:42px;
+  overflow:visible;
+  box-shadow:0 0 30px rgba(28,104,190,.1)
+}
+
+.exploracao:before,.exploracao:after{
+  content:"";
+  position:absolute;
+  border:2px solid #1d78d0;
+  border-radius:45px;
+  pointer-events:none
+}
+
+.exploracao:before{
+  inset:-8px 8px;
+  transform:rotate(2deg)
+}
+
+.exploracao:after{
+  inset:5px -12px 6px;
+  transform:rotate(-3deg)
+}
+
+.imagemEspaco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 190px;
+  border-radius: 43px 43px 55px 55px;
+  background:
+    linear-gradient(rgba(0, 8, 25, .08), rgba(0, 8, 25, .08)),
+    url('https://www.correiobraziliense.com.br/cbradar/wp-content/uploads/2026/04/Retire_os_textos_202604151437.jpeg')
+    center / cover;
+}
+
+.conteudoExploracao{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  padding:147px 13px 9px;
+  border-radius:40px;
+  background:linear-gradient(transparent 30%,rgba(2,7,18,.84) 45%,#030817 59%)
+}
+
+.conteudoExploracao>small{
+  color:#1599ed;
+  font-size:6px;
+  letter-spacing:.4px
+}
+
+.conteudoExploracao h2{
+  margin:4px 0 6px;
+  font:700 11px Orbitron,sans-serif
+}
+
+.conteudoExploracao p{
+  color:#adb7c7;
+  font:6px/1.4 Georgia,serif
+}
+
+.conteudoExploracao>a{
+  float:right;
+  color:#4779e5;
+  font-size:5px;
+  text-decoration:none
+}
+
+.conteudoExploracao h3{
+  clear:both;
+  margin:12px 0 5px;
+  font:700 8px Orbitron,sans-serif
+}
+
+.sistemas{
+  display:block;
+  margin-top:3px;
+  color:#5875cf;
+  font-size:5px;
+  text-align:right
+}
+
+footer{
+  width:100%;
+  height:44px;
+  margin-top:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(90deg,#10285a,#17366e,#10285a);
+  color:#d8dce5;
+  font-size:6px;
+  border-top:1px solid #214b88
+}
