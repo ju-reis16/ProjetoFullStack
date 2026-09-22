@@ -1,8 +1,16 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Explorar.css";
 
 function Explorar() {
+  const navigate = useNavigate();
   const [filtroSelecionado, setFiltroSelecionado] = useState("Todos");
+
+  function sair() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+    navigate("/login", { replace: true });
+  }
 
   const objetos = [
     {
@@ -100,20 +108,20 @@ return (
         </div>
 
         <nav className="menu">
-          <a href="#">Início</a>
-          <a href="#" className="menu-ativo">
+          <Link to="/home">Início</Link>
+          <Link to="/explorar" className="menu-ativo">
             Explorar
-          </a>
-          <a href="#">Planetas</a>
-          <a href="#">Sistemas</a>
-          <a href="#">Meu Perfil</a>
+          </Link>
+          <Link to="/planetas">Planetas</Link>
+          <Link to="/sistemas">Sistemas</Link>
+          <Link to="/perfil">Meu Perfil</Link>
         </nav>
 
         <div className="usuario">
           <div className="usuario-icon">EC</div>
           <span>Elena Costa</span>
           <span className="separador">|</span>
-          <a href="#">Sair</a>
+          <button type="button" onClick={sair}>Sair</button>
         </div>
       </header>
 

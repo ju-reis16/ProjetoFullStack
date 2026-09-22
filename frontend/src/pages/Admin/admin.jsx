@@ -1,9 +1,26 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Admin.css";
 
 function Admin({ onAbrirCard }) {
+  const navigate = useNavigate();
   const [pagina, setPagina] = useState("inicio");
   const [modoPerfil, setModoPerfil] = useState("");
+
+  function abrirCard(topico) {
+    if (onAbrirCard) {
+      onAbrirCard(topico);
+      return;
+    }
+
+    navigate("/card", { state: { topico } });
+  }
+
+  function sair() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+    navigate("/login", { replace: true });
+  }
 
   function abrirPerfil(modo = "") {
     setPagina("perfil");
@@ -37,15 +54,15 @@ function Admin({ onAbrirCard }) {
               Início
             </button>
 
-            <button>
+            <button onClick={() => navigate("/explorar")}>
               Explorar
             </button>
 
-            <button>
+            <button onClick={() => navigate("/planetas")}>
               Planetas
             </button>
 
-            <button>
+            <button onClick={() => navigate("/sistemas")}>
               Sistemas
             </button>
 
@@ -60,7 +77,7 @@ function Admin({ onAbrirCard }) {
           <div className="usuario">
             <span>👤</span>
             <p>Elena Costa</p>
-            <b>Sair</b>
+            <button type="button" onClick={sair}>Sair</button>
           </div>
         </header>
 
@@ -159,15 +176,15 @@ function Admin({ onAbrirCard }) {
             Início
           </button>
 
-          <button>
+          <button onClick={() => navigate("/explorar")}>
             Explorar
           </button>
 
-          <button>
+          <button onClick={() => navigate("/planetas")}>
             Planetas
           </button>
 
-          <button>
+          <button onClick={() => navigate("/sistemas")}>
             Sistemas
           </button>
 
@@ -179,7 +196,7 @@ function Admin({ onAbrirCard }) {
         <div className="usuario">
           <span>👤</span>
           <p>Elena Costa</p>
-          <b>Sair</b>
+          <button type="button" onClick={sair}>Sair</button>
         </div>
       </header>
 
@@ -197,7 +214,7 @@ function Admin({ onAbrirCard }) {
         <div className="botoes-principais">
           <button
             onClick={() =>
-              onAbrirCard("Sistema Estelares")
+              abrirCard("Sistema Estelares")
             }
           >
             ✦ SISTEMA ESTELARES
@@ -205,7 +222,7 @@ function Admin({ onAbrirCard }) {
 
           <button
             onClick={() =>
-              onAbrirCard("Mapa do Universo")
+              abrirCard("Mapa do Universo")
             }
           >
             ✦ MAPA DO UNIVERSO
@@ -213,7 +230,7 @@ function Admin({ onAbrirCard }) {
 
           <button
             onClick={() =>
-              onAbrirCard("Catálogo de Objetos")
+              abrirCard("Catálogo de Objetos")
             }
           >
             ✦ CATÁLOGO DE OBJETOS

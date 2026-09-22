@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header className="site-header">
@@ -7,11 +9,11 @@ function Header() {
       </div>
 
       <nav aria-label="Navegação principal">
-        <a href="/home">Início</a>
-        <a href="/explorar">Explorar</a>
-        <a href="/planetas" aria-current="page">Planetas</a>
-        <a href="/sistemas">Sistemas</a>
-        <a href="/perfil">Meu Perfil</a>
+        <Link to="/home">Início</Link>
+        <Link to="/explorar">Explorar</Link>
+        <Link to="/planetas" aria-current="page">Planetas</Link>
+        <Link to="/sistemas">Sistemas</Link>
+        <Link to="/perfil">Meu Perfil</Link>
       </nav>
     </header>
   );

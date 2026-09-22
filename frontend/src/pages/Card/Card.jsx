@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Card.css";
 
-function Card({ topico, onVoltar }) {
+function Card({ topico: topicoProp, onVoltar }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const topico = topicoProp || location.state?.topico || "Mapa do Universo";
+  const voltar = onVoltar || (() => navigate("/perfil"));
   const [passo, setPasso] = useState(1);
   const [acao, setAcao] = useState("");
 
@@ -31,7 +36,7 @@ function Card({ topico, onVoltar }) {
   return (
     <div className="card-page">
       <header className="card-topo">
-        <button className="voltar" onClick={onVoltar}>
+        <button className="voltar" onClick={voltar}>
           ← Voltar
         </button>
 

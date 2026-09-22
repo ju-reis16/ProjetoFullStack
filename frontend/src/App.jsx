@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import ProtectedRoute from "./pages/components/ProtectedRoute";
+import Laing from "./pages/Laing/laing";
 import LoginCadastro from "./pages/login/login";
 import Home from "./pages/Home/home";
 import Explorar from "./pages/Explorar/Explorar";
@@ -12,14 +14,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginCadastro />} />
+        <Route path="/" element={<Laing />} />
         <Route path="/login" element={<LoginCadastro />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/explorar" element={<Explorar />} />
-        <Route path="/planetas" element={<Planetas />} />
-        <Route path="/sistemas" element={<SistemasEstelares />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/card" element={<Card />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/explorar" element={<Explorar />} />
+          <Route path="/planetas" element={<Planetas />} />
+          <Route path="/sistemas" element={<SistemasEstelares />} />
+          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/card" element={<Card />} />
+        </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

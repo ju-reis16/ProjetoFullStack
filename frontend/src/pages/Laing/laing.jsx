@@ -1,4 +1,4 @@
-import "./landing.css";
+import "./laing.css";
 import { Link } from "react-router-dom";
 
 function App() {

@@ -1,6 +1,15 @@
+import { Link, useNavigate } from "react-router-dom";
 import "./SistemasEstelares.css";
 
 function SistemasEstelares() {
+  const navigate = useNavigate();
+
+  function sair() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+    navigate("/login", { replace: true });
+  }
+
   const sistemas = [
     {
       nome: "Alpha Centauri",
@@ -133,15 +142,15 @@ function SistemasEstelares() {
         </div>
 
         <nav className="menu">
-          <a href="#">Início</a>
-          <a href="#">Explorar</a>
-          <a href="#">Planetas</a>
+          <Link to="/home">Início</Link>
+          <Link to="/explorar">Explorar</Link>
+          <Link to="/planetas">Planetas</Link>
 
-          <a href="#" className="menu-ativo">
+          <Link to="/sistemas" className="menu-ativo">
             Sistemas
-          </a>
+          </Link>
 
-          <a href="#">Meu Perfil</a>
+          <Link to="/perfil">Meu Perfil</Link>
         </nav>
 
         <div className="usuario">
@@ -153,7 +162,7 @@ function SistemasEstelares() {
 
           <span className="separador">|</span>
 
-          <a href="#">Sair</a>
+          <button type="button" onClick={sair}>Sair</button>
         </div>
 
       </header>

@@ -1,4 +1,5 @@
 import './home.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 const catalogo = [
   {
@@ -23,6 +24,22 @@ const catalogo = [
   }
 ]
 function Home() {
+    const navigate = useNavigate()
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}')
+    const nome = usuario.nome || 'Explorador'
+    const iniciais = nome
+      .split(' ')
+      .map((parte) => parte[0])
+      .slice(0, 2)
+      .join('')
+      .toUpperCase()
+
+    function sair() {
+      localStorage.removeItem('token')
+      localStorage.removeItem('usuario')
+      navigate('/login', { replace: true })
+    }
+
   return (
     <div className="pagina">
 
@@ -40,18 +57,18 @@ function Home() {
         </div>
 
         <nav>
-          <a className="ativo">Início</a>
-          <a>Explorar</a>
-          <a>Planetas</a>
-          <a>Sistemas</a>
-          <a>Meu Perfil</a>
+            <Link className="ativo" to="/home">Início</Link>
+            <Link to="/explorar">Explorar</Link>
+            <Link to="/planetas">Planetas</Link>
+            <Link to="/sistemas">Sistemas</Link>
+            <Link to="/perfil">Meu Perfil</Link>
         </nav>
 
         <div className="perfil">
-          <b>EC</b>
-          <span>Elena Costa</span>
+            <b>{iniciais}</b>
+            <span>{nome}</span>
           <i>|</i>
-          <a>Sair</a>
+            <button type="button" onClick={sair}>Sair</button>
         </div>
 
       </header>
@@ -62,7 +79,7 @@ function Home() {
           <small>MISSÃO ATIVA · 8 DE SETEMBRO DE 2026</small>
 
           <h2>
-            Bem - Vinda, <span>Elena</span>
+              Bem-vindo, <span>{nome}</span>
           </h2>
         </section>
 
@@ -144,14 +161,14 @@ function Home() {
 
             <div className="tituloCatalogo">
               <h3>Catálogo Recente</h3>
-              <a>Ver</a>
+                <Link to="/sistemas">Ver</Link>
             </div>
 
             {catalogo.map((item) => (
               <div className="itemCatalogo" key={item.nome}>
                 <img src={item.imagem} alt={item.nome} />
                 <span>{item.nome}</span>
-                <a>Ver</a>
+                  <Link to="/explorar">Ver</Link>
               </div>
             ))}
 
@@ -175,7 +192,7 @@ function Home() {
               aproxime-se dos mistérios que tornam o cosmos tão fascinante.
             </p>
 
-            <a>Ver</a>
+              <Link to="/explorar">Ver</Link>
 
             <h3>Sistemas Estelares</h3>
 
@@ -186,7 +203,7 @@ function Home() {
               a complexidade e a diversidade do universo.
             </p>
 
-            <a>Ver</a>
+              <Link to="/sistemas">Ver</Link>
 
             <span className="sistemas">
               4 sistemas disponíveis
