@@ -4,7 +4,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import profileRouter from './routes/profileRoute'
-import authRouter from './routes/auth'
+import authRouter from './routes/auth.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 

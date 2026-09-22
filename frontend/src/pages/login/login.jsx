@@ -7,7 +7,7 @@ const API_URL = "http://localhost:3001";
 async function requisicaoJson(url, opcoes) {
   try {
     const resposta = await fetch(url, opcoes);
-    const dados = await resposta.json();
+    const dados = await resposta.json(); // This line remains unchanged
 
     if (!resposta.ok) {
       throw new Error(dados.error || "Não foi possível concluir a operação.");

@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import LoginCadastro from "./pages/LoginCadastro";
-import Home from "./pages/Home";
+import LoginCadastro from "./pages/login/login";
+import Home from "./pages/Home/home";
 import Explorar from "./pages/Explorar";
-import Planetas from "./pages/Planetas";
-import SistemasEstelares from "./pages/SistemasEstelares";
-import Perfil from "./pages/Perfil";
-import Card from "./pages/Card";
+import Planetas from "./pages/Planetas/Planetas";
+import SistemasEstelares from "./pages/Sistemas/SistemasEstelares";
+import Perfil from "./pages/Admin/admin";
+import Card from "./pages/Card/Card";
 
 function App() {
   return (
