@@ -131,3 +131,51 @@ return (
           </p>
         </div>
       </section>
+      <div className="explorar-filtros">
+        {filtros.map((filtro) => (
+          <button
+            key={filtro}
+            className={
+              filtroSelecionado === filtro
+                ? "filtro selecionado"
+                : "filtro"
+            }
+            onClick={() => setFiltroSelecionado(filtro)}
+          >
+            {filtro}
+          </button>
+        ))}
+      </div>
+
+      <section className="objetos-grid">
+        {objetosFiltrados.map((objeto) => (
+          <div className="objeto-card" key={objeto.nome}>
+            <img src={objeto.imagem} alt={objeto.nome} />
+
+            <div className="card-overlay"></div>
+
+            <span className="objeto-categoria">
+              {objeto.categoria}
+            </span>
+
+            <div className="objeto-info">
+              <h2>{objeto.nome}</h2>
+
+              <p>{objeto.tipo}</p>
+
+              <small>{objeto.distancia}</small>
+
+              <button className="ver-btn">Ver →</button>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <footer className="explorar-footer">
+        © 2026 Cosmos Observatory
+      </footer>
+    </div>
+  );
+}
+
+export default Explorar;
