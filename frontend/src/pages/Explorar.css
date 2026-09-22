@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&display=swap');
+
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%; min-height: 100%;
+}
+
+body {
+  background: #02040c;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.explorar-page {
+  width: 100%; min-height: 100vh;
+  background: #02040c; color: white;
+  overflow-x: hidden;
+}
+
+.explorar-header {
+  height: 76px; padding: 0 40px;
+  display: flex; align-items: center;
+  background: #02030a;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  position: relative; z-index: 10;
+}
+
+.logo-area {
+  width: 235px; display: flex;
+  align-items: center; flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 58px; height: 58px; margin-right: 12px;
+  border: 2px solid #172c62; border-radius: 50%;
+  display: flex; align-items: center;
+  justify-content: center; position: relative;
+}
+
+.logo-icon::before {
+  content: ""; position: absolute;
+  width: 44px; height: 44px;
+  border: 2px solid #172c62; border-radius: 50%;
+}
+
+.logo-circle {
+  width: 29px; height: 29px; border-radius: 50%;
+  background: #142a60; border: 2px solid #254587;
+  position: relative; z-index: 2;
+}
+
+.logo-text {
+  display: flex; flex-direction: column;
+}
+
+.logo-text strong {
+  font: 400 19px Georgia, "Times New Roman", serif;
+  letter-spacing: .5px;
+}
+
+.logo-text span {
+  margin-top: 2px;
+  font: 10px Georgia, "Times New Roman", serif;
+  letter-spacing: .5px; color: #8c8490;
+}
+
+.menu {
+  flex: 1; display: flex;
+  align-items: center; justify-content: center; gap: 5px;
+}
+
+.menu a {
+  padding: 8px 9px; border-radius: 6px;
+  color: #c8cbd3; text-decoration: none;
+  font-size: 11px; transition: .2s;
+}
+
+.menu a:hover,
+.usuario a:hover {
+  color: white;
+}
+
+.menu .menu-ativo {
+  color: white; background: #142d51;
+  box-shadow: inset 0 -3px 0 #258bff;
+}
+
+.usuario {
+  width: 235px; display: flex;
+  align-items: center; justify-content: flex-end;
+  gap: 8px; flex-shrink: 0;
+  color: #e1e3e8; font-size: 11px;
+}
+
+.usuario-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #1688f5; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 10px;
+}
+
+.usuario .separador { color: #777d88; }
+
+.usuario a {
+  color: #c5cad3; text-decoration: none;
+}
+
+.explorar-hero {
+  height: 360px; display: flex;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: url("https://images.unsplash.com/photo-1450849608880-6f787542c88a?auto=format&fit=crop&w=2400&q=90") center/cover no-repeat;
+}
