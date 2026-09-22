@@ -1,12 +1,11 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import pool from '../db.js'
+import database from '../database.js'
 
 const router = express.Router()
 
-const JWT_SECRET =
-  process.env.JWT_SECRET || 'chave-local-de-desenvolvimento'
+const JWT_SECRET = 'chave-local-de-desenvolvimento'
 
 function criarToken(usuario) {
   return jwt.sign(
@@ -38,9 +37,7 @@ router.post('/cadastro', async (req, res, next) => {
     const { nome, email, senha } = req.body
 
     const nomeNormalizado = String(nome || '').trim()
-    const emailNormalizado = String(email || '')
-      .trim()
-      .toLowerCase()
+    const emailNormalizado = String(email || '').trim().toLowerCase()
 
     if (!nomeNormalizado || !emailNormalizado || !senha) {
       return res.status(400).json({
@@ -54,7 +51,7 @@ router.post('/cadastro', async (req, res, next) => {
       })
     }
 
-    const existente = await pool.query(
+    const existente = await database.query(
       'SELECT id_usuario FROM usuarios WHERE email = $1',
       [emailNormalizado]
     )
@@ -67,12 +64,16 @@ router.post('/cadastro', async (req, res, next) => {
 
     const senhaHash = await bcrypt.hash(senha, 12)
 
-    const resultado = await pool.query(
+    const resultado = await database.query(
       `INSERT INTO usuarios
         (nome_completo, email, senha, tipo_usuario)
        VALUES ($1, $2, $3, 'usuario')
        RETURNING id_usuario, nome_completo, email, tipo_usuario, ativo`,
-      [nomeNormalizado, emailNormalizado, senhaHash]
+      [
+        nomeNormalizado,
+        emailNormalizado,
+        senhaHash
+      ]
     )
 
     const usuario = resultado.rows[0]
@@ -90,11 +91,9 @@ router.post('/login', async (req, res, next) => {
   try {
     const { email, senha } = req.body
 
-    const emailNormalizado = String(email || '')
-      .trim()
-      .toLowerCase()
+    const emailNormalizado = String(email || '').trim().toLowerCase()
 
-    const resultado = await pool.query(
+    const resultado = await database.query(
       'SELECT * FROM usuarios WHERE email = $1',
       [emailNormalizado]
     )
@@ -146,7 +145,7 @@ router.get('/me', async (req, res, next) => {
 
     const dadosToken = jwt.verify(token, JWT_SECRET)
 
-    const resultado = await pool.query(
+    const resultado = await database.query(
       `SELECT
         id_usuario,
         nome_completo,

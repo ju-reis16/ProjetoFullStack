@@ -1,13 +1,18 @@
 import express from 'express'
+import cors from 'cors'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import profileRouter from './routes/profileRoute.js'
-import authRouter from './routes/auth.js'
+import profileRouter from './routes/profileRoute'
+import authRouter from './routes/auth'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const app = express()
+
+app.use(cors({
+  origin: 'http://localhost:5173'
+}))
 
 app.use(express.json())
 
@@ -17,14 +22,12 @@ app.use('/api/auth', authRouter)
 app.use((error, _request, response, _next) => {
   console.error('Erro na API:', error.message)
 
-  response
-    .status(error.statusCode || 500)
-    .json({
-      error:
-        error.statusCode === 404
-          ? error.message
-          : 'Não foi possível acessar o banco de dados.'
-    })
+  response.status(error.statusCode || 500).json({
+    error:
+      error.statusCode === 404
+        ? error.message
+        : 'Não foi possível acessar o banco de dados.'
+  })
 })
 
 const distPath = path.join(__dirname, '..', 'dist')
