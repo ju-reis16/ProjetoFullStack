@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #020712;
+  font-family: Georgia, serif;
+}
+
+.admin {
+  min-height: 100vh;
+  color: #d9e4f5;
+  background: #020712;
+}
+
+.admin-header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  border-bottom: 1px solid #102b4b;
+  background: #010611;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 220px;
+}
+
+.logo-circulos {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #1678d1;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.logo-circulos span {
+  display: block;
+  height: 100%;
+  border: 1px solid #14528c;
+  border-radius: 50%;
+}
+
+.logo-circulos span:not(:first-child) {
+  margin-top: -100%;
+  transform: scale(.72);
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.logo p {
+  margin: 0;
+  color: #508ac2;
+  font-size: 9px;
+}
+
+nav {
+  display: flex;
+  gap: 5px;
+}
+
+nav button {
+  border: 0;
+  background: transparent;
+  color: #a9bfd8;
+  font-size: 9px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+nav button:hover,
+nav .nav-ativo {
+  color: white;
+  background: #0c4782;
+  border-radius: 5px;
+}
+
+.usuario {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 8px Arial;
+}
+
+.usuario span {
+  background: #087de2;
+  padding: 7px;
+  border-radius: 50%;
+}
+
+.usuario p {
+  margin: 0;
+}
+
+.usuario b {
+  color: #9cb2ca;
+}
+
+.missao {
+  margin: 25px 5% 10px;
+  color: #607c9c;
+  font: 8px Arial;
+}
+
+.bem-vindo {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400;
+  margin: 35px 0 50px;
+}
+
+.bem-vindo span {
+  color: #1989e8;
+}
+
+.topicos {
+  width: 70%;
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #172f4e;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #07172d, #020814);
+}
+
+.topicos h3 {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  color: #9bb9d6;
+}
+
+.botoes-principais {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.botoes-principais button {
+  min-height: 80px;
+  border: 1px solid #3154a0;
+  border-radius: 10px;
+  background: #101a35;
+  color: #9eb2d0;
+  font: 11px Georgia;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.botoes-principais button:hover {
+  border-color: #1b8ce9;
+  background: #10294a;
+  color: white;
+  transform: translateY(-2px);
+}
