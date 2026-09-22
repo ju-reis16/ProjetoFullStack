@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1c1c1c;
+  font-family: "Inter", sans-serif;
+}
+
+#root:has(.cosmos-page) {
+  width: 100%;
+  max-width: none;
+  border-inline: none;
+}
+
+.cosmos-page {
+  width: 100vw;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background:
+    linear-gradient(
+      rgba(2, 13, 23, 0.18),
+      rgba(2, 13, 23, 0.35)
+    ),
+    url("https://media.istockphoto.com/id/2234142725/pt/foto/bright-spiral-galaxy-in-deep-space-with-glowing-center-and-distant-stars-in-the-universe.webp?a=1&b=1&s=612x612&w=0&k=20&c=cabeV4SLLIGlCHXVGvJ9JVSrkEL5-Xjeu5KA6v0tKoU=")
+    center center / cover no-repeat;
+}
+
+.cosmos-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(40, 139, 190, 0.15),
+      transparent 35%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 8, 15, 0.3),
+      transparent 45%,
+      rgba(0, 8, 15, 0.25)
+    );
+  pointer-events: none;
+}
+
+.cosmos-page .header {
+  height: 90px;
+  width: 100%;
+  padding: 16px clamp(22px, 5vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 7, 15, 0.8);
+  border-top: 1px solid rgba(146, 196, 235, 0.15);
+  border-bottom: 1px solid rgba(146, 196, 235, 0.2);
+}
+
+.cosmos-logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.cosmos-logo-icon {
+  width: 56px;
+  height: 56px;
+  border: 2px solid #2779dc;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cosmos-logo-icon::before,
+.cosmos-logo-icon::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #2779dc;
+  border-radius: 50%;
+}
+
+.cosmos-logo-icon::before {
+  width: 42px;
+  height: 42px;
+}
+
+.cosmos-logo-icon::after {
+  width: 28px;
+  height: 28px;
+  border-width: 2px;
+}
+
+.cosmos-logo-icon span {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #2779dc;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.cosmos-logo-icon span:nth-child(1) {
+  top: 2px;
+  left: 25px;
+}
+
+.cosmos-logo-icon span:nth-child(2) {
+  bottom: 7px;
+  right: 3px;
+}
+
+.cosmos-logo-icon span:nth-child(3) {
+  bottom: 7px;
+  left: 4px;
+}
+
+.cosmos-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.cosmos-logo-text strong {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.cosmos-logo-text small {
+  color: #438de5;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 2px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 17px;
+  background: #168cf2;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100svh - 90px);
+  padding: 20px 24px 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 32px;
+  border-radius: 20px;
+  background: rgba(0, 110, 190, 0.38);
+  border: 1px solid rgba(40, 153, 225, 0.3);
+  color: #65a9d5;
+  font-family: "Playfair Display", serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  margin-top: 12px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(55px, 7vw, 82px);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -2px;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 span {
+  color: #8ed8ff;
+}
+
+.hero p {
+  margin-top: 28px;
+  color: #c7ced3;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  padding: 0 27px;
+  border-radius: 25px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-button {
+  border: none;
+  background: #168cf2;
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 125, 220, 0.3);
+}
+
+.primary-button:hover {
+  background: #299cf8;
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(210, 225, 235, 0.5);
+  color: white;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cosmos-page .stats {
+  position: absolute;
+  z-index: 2;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(640px, calc(100% - 48px));
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.stat {
+  min-width: 0;
+  flex: 0 1 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat strong {
+  color: #168cf2;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.stat span {
+  color: #668ba8;
+  font-family: "Playfair Display", serif;
+  font-size: 8px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .cosmos-page .header {
+    padding: 18px 22px;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .nav a {
+    display: none;
+  }
+
+  .hero {
+    min-height: calc(100svh - 90px);
+    padding: 70px 20px 150px;
+  }
+
+  .hero h1 {
+    font-size: 55px;
+  }
+
+  .hero p br {
+    display: none;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 190px;
+  }
+
+  .cosmos-page .stats {
+    width: calc(100% - 36px);
+    gap: 18px;
+    bottom: 25px;
+  }
+}

@@ -1,4 +1,4 @@
-import { deleteProfile, findProfile, updateProfile } from '../Models/profile.js'
+import { deleteProfile, findProfile, updateProfile } from '../models/profileModel.js'
 
 export async function getProfile(_request, response, next) {
   try {

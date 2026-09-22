@@ -5,7 +5,7 @@ import database from '../config/database.js'
 
 const router = express.Router()
 
-const JWT_SECRET = 'chave-local-de-desenvolvimento'
+const JWT_SECRET = process.env.JWT_SECRET || 'chave-local-de-desenvolvimento'
 
 function criarToken(usuario) {
   return jwt.sign(

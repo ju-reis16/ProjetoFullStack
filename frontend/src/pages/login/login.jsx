@@ -50,7 +50,7 @@ export default function LoginCadastro() {
     setCarregando(true);
 
     try {
-      const dados = await requisicaoJson(`${API_URL}/api/login`, {
+      const dados = await requisicaoJson(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(login),
@@ -78,7 +78,7 @@ export default function LoginCadastro() {
     setCarregando(true);
 
     try {
-      const dados = await requisicaoJson(`${API_URL}/api/cadastro`, {
+      const dados = await requisicaoJson(`${API_URL}/api/auth/cadastro`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

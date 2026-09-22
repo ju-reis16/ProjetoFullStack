@@ -1,4 +1,4 @@
-import database, { profileId, profileIdColumn, profileTable } from '../Config/database.js'
+import database, { profileId, profileIdColumn, profileTable } from '../config/database.js'
 
 function serialize(profile) {
   return {

@@ -3,7 +3,7 @@ import cors from 'cors'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import profileRouter from './routes/profileRoute'
+import profileRouter from './routes/profileRoute.js'
 import authRouter from './routes/auth.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
