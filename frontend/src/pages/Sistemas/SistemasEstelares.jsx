@@ -116,3 +116,149 @@ function SistemasEstelares() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-h08FLCLKDjTVNU6VHM7HCleMti77-59UWHl2VdLLjTb63mWAKdrfunk&s=10",
     },
   ];
+  return (
+    <div className="sistemas-page">
+
+      <header className="sistemas-header">
+
+        <div className="logo-area">
+          <div className="logo-icon">
+            <div className="logo-circle"></div>
+          </div>
+
+          <div className="logo-text">
+            <strong>COSMOS</strong>
+            <span>OBSERVATORY</span>
+          </div>
+        </div>
+
+        <nav className="menu">
+          <a href="#">Início</a>
+          <a href="#">Explorar</a>
+          <a href="#">Planetas</a>
+
+          <a href="#" className="menu-ativo">
+            Sistemas
+          </a>
+
+          <a href="#">Meu Perfil</a>
+        </nav>
+
+        <div className="usuario">
+          <div className="usuario-icon">
+            EC
+          </div>
+
+          <span>Elena Costa</span>
+
+          <span className="separador">|</span>
+
+          <a href="#">Sair</a>
+        </div>
+
+      </header>
+
+      <main className="sistemas-conteudo">
+
+        <div className="sistemas-titulo">
+
+          <span>MAPEAMENTO ESTELAR</span>
+
+          <h1>Sistemas Estelares</h1>
+
+          <p>4 sistemas catalogados na base de dados</p>
+
+        </div>
+
+        <section className="sistemas-grid">
+
+          {sistemas.map((sistema) => (
+
+            <article
+              className="sistema-card"
+              key={sistema.nome}
+            >
+
+              <div className="sistema-imagem">
+
+                <img
+                  src={sistema.imagem}
+                  alt={sistema.nome}
+                />
+
+                <span className="sistema-tipo">
+                  {sistema.tipo}
+                </span>
+
+              </div>
+
+              <div className="sistema-info">
+
+                <h2>{sistema.nome}</h2>
+
+                <p className="sistema-descricao">
+                  {sistema.descricao}
+                </p>
+
+                <div className="sistema-dados">
+
+                  <div>
+                    <span>TIPO ESTELAR</span>
+                    <p>{sistema.tipoEstelar}</p>
+                  </div>
+
+                  <div>
+                    <span>DISTÂNCIA</span>
+                    <p>{sistema.distancia}</p>
+                  </div>
+
+                  <div>
+                    <span>IDADE</span>
+                    <p>{sistema.idade}</p>
+                  </div>
+
+                </div>
+
+                <div className="sistema-inferior">
+
+                  <div className="bloco-objetos">
+
+                    <span className="titulo-bloco">
+                      OBJETOS NESTE SISTEMA
+                    </span>
+
+                    <p>{sistema.objetos}</p>
+
+                  </div>
+
+                  <div className="bloco-constelacao">
+
+                    <span className="titulo-bloco">
+                      CONSTELAÇÃO
+                    </span>
+
+                    <p>{sistema.constelacao}</p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          ))}
+
+        </section>
+
+      </main>
+
+      <footer className="sistemas-footer">
+        © 2026 Cosmos. Todos os direitos reservados.
+      </footer>
+
+    </div>
+  );
+}
+
+export default SistemasEstelares;
