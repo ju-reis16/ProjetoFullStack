@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card-page {
+  min-height: 100vh;
+  background: #020814;
+  color: #dce8f7;
+  font-family: Georgia, serif;
+}
+
+.card-topo {
+  min-height: 110px;
+  padding: 18px 6%;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: #010914;
+  border-bottom: 1px solid #155b96;
+}
+
+.voltar,
+.botao-voltar {
+  border: 1px solid #1b73b9;
+  border-radius: 7px;
+  padding: 8px 13px;
+  background: #071d35;
+  color: #80b8e8;
+  cursor: pointer;
+}
+
+.marca h1 {
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.marca span {
+  color: #528cc3;
+  font: 9px Arial;
+}
+
+.card-titulo {
+  border-left: 1px solid #54728e;
+  padding-left: 20px;
+}
+
+.card-titulo h2 {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.card-titulo p,
+.tela-passo > p {
+  margin-top: 6px;
+  color: #7895b2;
+  font: 11px Arial;
+}
+
+.exemplo-card {
+  margin-left: auto;
+  padding: 8px 13px;
+  border: 1px solid #1472c7;
+  border-radius: 15px;
+}
+
+.exemplo-card small {
+  display: block;
+  color: #6685a3;
+  font: 8px Arial;
+}
+
+.passos {
+  max-width: 850px;
+  margin: 25px auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.passo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #536b86;
+  font: 9px Arial;
+}
+
+.passo b {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #214c73;
+  border-radius: 50%;
+}
+
+.passo.ativo {
+  color: #74b8ef;
+}
+
+.passo.ativo b {
+  background: #0b4782;
+  border-color: #2695ed;
+  color: white;
+}
