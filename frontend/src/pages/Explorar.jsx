@@ -70,3 +70,17 @@ function Explorar() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd1U22HINDUiy59EqSlo6CrKMLVBkANjmdaT0OB1dtcnSF777z-KovXg0&s=10",
     },
   ];
+const filtros = [
+    "Todos",
+    "Exoplaneta",
+    "Super-Terra",
+    "Gigante Gasoso",
+    "Planeta Terrestre",
+    "Galáxia",
+    "Nebulosa",
+  ];
+
+  const objetosFiltrados =
+    filtroSelecionado === "Todos"
+      ? objetos
+      : objetos.filter((objeto) => objeto.categoria === filtroSelecionado);
