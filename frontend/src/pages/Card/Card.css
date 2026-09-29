@@ -193,8 +193,7 @@
 .form-card,
 .resumo,
 .resultado-card {
-  max-width: 500px;
-  margin: 25px auto;
+  max-width: 1500px;
   border: 1px solid #185f9d;
   border-radius: 10px;
   background: #030f20;

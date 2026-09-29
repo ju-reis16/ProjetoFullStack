@@ -58,7 +58,12 @@ export default function LoginCadastro() {
 
       localStorage.setItem("token", dados.token);
       localStorage.setItem("usuario", JSON.stringify(dados.usuario));
-      navigate("/home");
+
+      if (dados.usuario.tipo === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/home");
+      }
     } catch (error) {
       setMensagem(error.message || "Não foi possível entrar.");
     } finally {

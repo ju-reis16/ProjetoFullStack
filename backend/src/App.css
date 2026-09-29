@@ -9,13 +9,28 @@
   --blue: #1a51e8;
 }
 
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 100%;
   background: #050505;
   color: var(--white);
   font-family: 'DM Sans', sans-serif;
@@ -209,9 +224,22 @@ h1 {
 
 .content-grid {
   display: grid;
-  grid-template-columns: 116px 1fr;
-  gap: 20px;
+  grid-template-columns: 310px minmax(0, 1fr);
+  gap: 25px;
+  width: 100%;
   align-items: start;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+.settings .card {
+  width: 100%;
 }
 
 .sidebar,

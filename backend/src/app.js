@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 import profileRouter from './routes/profileRoute.js'
 import authRouter from './routes/auth.js'
+import cardsRouter from './routes/cardsRouter.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -18,6 +19,7 @@ app.use(express.json())
 
 app.use('/api/profile', profileRouter)
 app.use('/api/auth', authRouter)
+app.use('/api/cards', cardsRouter)
 
 app.use((error, _request, response, _next) => {
   console.error('Erro na API:', error.message)

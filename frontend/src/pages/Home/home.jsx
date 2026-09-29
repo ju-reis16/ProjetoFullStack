@@ -1,77 +1,35 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import HeaderRouter from '../components/HeaderRouter'
 import './home.css'
-import { Link, useNavigate } from 'react-router-dom'
 
-const catalogo = [
-  {
-    nome: 'Kepler-452b',
-    imagem: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Kepler-452b_artist_concept.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original&#39'
-  },
-  {
-    nome: 'HD 189733b',
-    imagem: 'https://s2-oglobo.glbimg.com/TilppykMTZI_YY06G0yTWmwIDUs=/0x0:1200x900/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2025/k/G/ANvMrnTWCKiKiA1HaBRw/planeta-nasa.webp'
-  },
-  {
-    nome: 'Proxima Centauri b',
-    imagem: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=100&q=80&#39'
-  },
-  {
-    nome: 'TRAPPIST-1e',
-    imagem: 'https://images.unsplash.com/photo-1504333638930-c8787321eee0?auto=format&fit=crop&w=100&q=80&#39'
-  },
-  {
-    nome: 'Nebulosa do Caranguejo',
-    imagem: 'https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&w=100&q=80&#39'
-  }
-]
 function Home() {
-    const navigate = useNavigate()
-    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}')
-    const nome = usuario.nome || 'Explorador'
-    const iniciais = nome
-      .split(' ')
-      .map((parte) => parte[0])
-      .slice(0, 2)
-      .join('')
-      .toUpperCase()
+  const usuario = JSON.parse(localStorage.getItem('usuario') || '{}')
+  const nome = usuario.nome || 'Explorador'
 
-    function sair() {
-      localStorage.removeItem('token')
-      localStorage.removeItem('usuario')
-      navigate('/login', { replace: true })
-    }
+  const [catalogo, setCatalogo] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/cards/explorar')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Não foi possível carregar o catálogo.')
+        }
+
+        return response.json()
+      })
+      .then((data) => {
+        setCatalogo(data.slice(0, 5))
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [])
 
   return (
     <div className="pagina">
 
-      <header className="cabecalho">
-
-        <div className="logo">
-          <div className="logoIcon">
-            ◎
-          </div>
-
-          <div>
-            <h1>COSMOS</h1>
-            <span>OBSERVATORY</span>
-          </div>
-        </div>
-
-        <nav>
-            <Link className="ativo" to="/home">Início</Link>
-            <Link to="/explorar">Explorar</Link>
-            <Link to="/planetas">Planetas</Link>
-            <Link to="/sistemas">Sistemas</Link>
-            <Link to="/perfil">Meu Perfil</Link>
-        </nav>
-
-        <div className="perfil">
-            <b>{iniciais}</b>
-            <span>{nome}</span>
-          <i>|</i>
-            <button type="button" onClick={sair}>Sair</button>
-        </div>
-
-      </header>
+      <HeaderRouter />
 
       <main>
 
@@ -79,32 +37,32 @@ function Home() {
           <small>MISSÃO ATIVA · 8 DE SETEMBRO DE 2026</small>
 
           <h2>
-              Bem-vindo, <span>{nome}</span>
+            Bem-vindo, <span>{nome}</span>
           </h2>
         </section>
 
         <section className="estatisticas">
 
           <div>
-            <small>Objetivos catalogados</small>
+            <small>Objetos catalogados</small>
             <strong>8</strong>
             <span>NO REPOSITÓRIO</span>
           </div>
 
           <div>
-            <small>Objetivos catalogados</small>
+            <small>Objetos catalogados</small>
             <strong>4</strong>
             <span>MAPEADOS</span>
           </div>
 
           <div>
-            <small>Objetivos catalogados</small>
+            <small>Objetos catalogados</small>
             <strong>2,4 mil</strong>
             <span>DO SISTEMA SOLAR</span>
           </div>
 
           <div>
-            <small>Objetivos catalogados</small>
+            <small>Objetos catalogados</small>
             <strong>3</strong>
             <span>CANDIDATOS</span>
           </div>
@@ -157,18 +115,26 @@ function Home() {
             </div>
 
           </div>
+
           <div className="catalogo">
 
             <div className="tituloCatalogo">
               <h3>Catálogo Recente</h3>
-                <Link to="/sistemas">Ver</Link>
+              <Link to="/explorar">Ver</Link>
             </div>
 
             {catalogo.map((item) => (
-              <div className="itemCatalogo" key={item.nome}>
-                <img src={item.imagem} alt={item.nome} />
-                <span>{item.nome}</span>
-                  <Link to="/explorar">Ver</Link>
+              <div className="itemCatalogo" key={item.id_card}>
+
+                <img
+                  src={item.imagem_url}
+                  alt={item.titulo}
+                />
+
+                <span>{item.titulo}</span>
+
+                <Link to="/explorar">Ver</Link>
+
               </div>
             ))}
 
@@ -192,7 +158,7 @@ function Home() {
               aproxime-se dos mistérios que tornam o cosmos tão fascinante.
             </p>
 
-              <Link to="/explorar">Ver</Link>
+            <Link to="/explorar">Ver</Link>
 
             <h3>Sistemas Estelares</h3>
 
@@ -203,7 +169,7 @@ function Home() {
               a complexidade e a diversidade do universo.
             </p>
 
-              <Link to="/sistemas">Ver</Link>
+            <Link to="/sistemas">Ver</Link>
 
             <span className="sistemas">
               4 sistemas disponíveis

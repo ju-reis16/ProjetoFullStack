@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AdminHeader from "../components/AdminHeader";
 import "./Admin.css";
 
 function Admin({ onAbrirCard }) {
@@ -16,12 +17,6 @@ function Admin({ onAbrirCard }) {
     navigate("/card", { state: { topico } });
   }
 
-  function sair() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("usuario");
-    navigate("/login", { replace: true });
-  }
-
   function abrirPerfil(modo = "") {
     setPagina("perfil");
     setModoPerfil(modo);
@@ -35,51 +30,11 @@ function Admin({ onAbrirCard }) {
   if (pagina === "perfil") {
     return (
       <div className="admin">
-        <header className="admin-header">
-          <div className="logo">
-            <div className="logo-circulos">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div>
-              <h1>COSMOS</h1>
-              <p>OBSERVATORY</p>
-            </div>
-          </div>
-
-          <nav>
-            <button onClick={voltarInicio}>
-              Início
-            </button>
-
-            <button onClick={() => navigate("/explorar")}>
-              Explorar
-            </button>
-
-            <button onClick={() => navigate("/planetas")}>
-              Planetas
-            </button>
-
-            <button onClick={() => navigate("/sistemas")}>
-              Sistemas
-            </button>
-
-            <button
-              className="nav-ativo"
-              onClick={() => abrirPerfil()}
-            >
-              Meu Perfil
-            </button>
-          </nav>
-
-          <div className="usuario">
-            <span>👤</span>
-            <p>Elena Costa</p>
-            <button type="button" onClick={sair}>Sair</button>
-          </div>
-        </header>
+        <AdminHeader
+          pagina={pagina}
+          voltarInicio={voltarInicio}
+          abrirPerfil={abrirPerfil}
+        />
 
         <p className="missao">
           MISSÃO ATIVA • 8 DE SETEMBRO DE 2026
@@ -157,48 +112,11 @@ function Admin({ onAbrirCard }) {
 
   return (
     <div className="admin">
-      <header className="admin-header">
-        <div className="logo">
-          <div className="logo-circulos">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div>
-            <h1>COSMOS</h1>
-            <p>OBSERVATORY</p>
-          </div>
-        </div>
-
-        <nav>
-          <button className="nav-ativo">
-            Início
-          </button>
-
-          <button onClick={() => navigate("/explorar")}>
-            Explorar
-          </button>
-
-          <button onClick={() => navigate("/planetas")}>
-            Planetas
-          </button>
-
-          <button onClick={() => navigate("/sistemas")}>
-            Sistemas
-          </button>
-
-          <button onClick={() => abrirPerfil()}>
-            Meu Perfil
-          </button>
-        </nav>
-
-        <div className="usuario">
-          <span>👤</span>
-          <p>Elena Costa</p>
-          <button type="button" onClick={sair}>Sair</button>
-        </div>
-      </header>
+      <AdminHeader
+        pagina={pagina}
+        voltarInicio={voltarInicio}
+        abrirPerfil={abrirPerfil}
+      />
 
       <p className="missao">
         MISSÃO ATIVA • 8 DE SETEMBRO DE 2026

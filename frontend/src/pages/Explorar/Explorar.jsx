@@ -1,84 +1,34 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import HeaderRouter from "../components/HeaderRouter";
 import "./Explorar.css";
 
 function Explorar() {
-  const navigate = useNavigate();
   const [filtroSelecionado, setFiltroSelecionado] = useState("Todos");
+  const [objetos, setObjetos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState("");
 
-  function sair() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("usuario");
-    navigate("/login", { replace: true });
-  }
+  useEffect(() => {
+    fetch("http://localhost:3001/api/cards/explorar")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Não foi possível carregar os objetos.");
+        }
 
-  const objetos = [
-    {
-      nome: "Kepler-452b",
-      tipo: "Exoplaneta",
-      distancia: "1.400 anos-luz",
-      categoria: "Exoplaneta",
-      imagem:
-        "https://upload.wikimedia.org/wikipedia/commons/e/ed/Kepler-452b_artist_concept.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original",
-    },
-    {
-      nome: "HD 189733b",
-      tipo: "Exoplaneta",
-      distancia: "63 anos-luz",
-      categoria: "Gigante Gasoso",
-      imagem:
-        "https://upload.wikimedia.org/wikipedia/commons/8/80/Artist%E2%80%99s_impression_of_the_deep_blue_planet_HD_189733b.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original",
-    },
-    {
-      nome: "Proxima Centauri b",
-      tipo: "Exoplaneta",
-      distancia: "4,24 anos-luz",
-      categoria: "Planeta Terrestre",
-      imagem:
-        "https://s2.glbimg.com/AwZbHRpIVjtalqmwR9_TksthVIw=/e.glbimg.com/og/ed/f/original/2016/09/12/proxima-b-habitable-zone-exoplanet-illustration-2x1-phl-upl.png",
-    },
-    {
-      nome: "TRAPPIST-1e",
-      tipo: "Exoplaneta",
-      distancia: "39 anos-luz",
-      categoria: "Planeta Terrestre",
-      imagem:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5f/TRAPPIST-1e_Artist%27s_Impression.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original",
-    },
-    {
-      nome: "Nebulosa do Caranguejo",
-      tipo: "Nebulosa",
-      distancia: "6.500 anos-luz",
-      categoria: "Nebulosa",
-      imagem:
-        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/960px-Crab_Nebula.jpg?utm_source=pt.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
-    },
-    {
-      nome: "Galáxia de Andrômeda",
-      tipo: "Galáxia",
-      distancia: "2,537 milhões de anos-luz",
-      categoria: "Galáxia",
-      imagem:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaGT9ZXtsg9b8XoKD1WfNGx5xxXJHBXBQHzs1ewyZTNw&s=10",
-    },
-    {
-      nome: "55 Cancri e",
-      tipo: "Exoplaneta",
-      distancia: "41 anos-luz",
-      categoria: "Super-Terra",
-      imagem:
-        "https://live-production.wcms.abc-cdn.net.au/517b569c883c94e18a8100c9136c337b?impolicy=wcms_crop_resize&cropH=438&cropW=659&xPos=7&yPos=0&width=862&height=575",
-    },
-    {
-      nome: "GJ 1214b",
-      tipo: "Exoplaneta",
-      distancia: "48 anos-luz",
-      categoria: "Super-Terra",
-      imagem:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd1U22HINDUiy59EqSlo6CrKMLVBkANjmdaT0OB1dtcnSF777z-KovXg0&s=10",
-    },
-  ];
-const filtros = [
+        return response.json();
+      })
+      .then((data) => {
+        setObjetos(data);
+      })
+      .catch((error) => {
+        setErro(error.message);
+      })
+      .finally(() => {
+        setCarregando(false);
+      });
+  }, []);
+
+  const filtros = [
     "Todos",
     "Exoplaneta",
     "Super-Terra",
@@ -91,39 +41,14 @@ const filtros = [
   const objetosFiltrados =
     filtroSelecionado === "Todos"
       ? objetos
-      : objetos.filter((objeto) => objeto.categoria === filtroSelecionado);
+      : objetos.filter(
+          (objeto) => objeto.categoria === filtroSelecionado
+        );
 
-return (
+  return (
     <div className="explorar-page">
-      <header className="explorar-header">
-        <div className="logo-area">
-          <div className="logo-icon">
-            <div className="logo-circle"></div>
-          </div>
 
-          <div className="logo-text">
-            <strong>COSMOS</strong>
-            <span>OBSERVATORY</span>
-          </div>
-        </div>
-
-        <nav className="menu">
-          <Link to="/home">Início</Link>
-          <Link to="/explorar" className="menu-ativo">
-            Explorar
-          </Link>
-          <Link to="/planetas">Planetas</Link>
-          <Link to="/sistemas">Sistemas</Link>
-          <Link to="/perfil">Meu Perfil</Link>
-        </nav>
-
-        <div className="usuario">
-          <div className="usuario-icon">EC</div>
-          <span>Elena Costa</span>
-          <span className="separador">|</span>
-          <button type="button" onClick={sair}>Sair</button>
-        </div>
-      </header>
+      <HeaderRouter />
 
       <section className="explorar-hero">
         <div className="hero-overlay"></div>
@@ -139,6 +64,7 @@ return (
           </p>
         </div>
       </section>
+
       <div className="explorar-filtros">
         {filtros.map((filtro) => (
           <button
@@ -155,33 +81,54 @@ return (
         ))}
       </div>
 
-      <section className="objetos-grid">
-        {objetosFiltrados.map((objeto) => (
-          <div className="objeto-card" key={objeto.nome}>
-            <img src={objeto.imagem} alt={objeto.nome} />
+      {carregando && (
+        <p>Carregando objetos...</p>
+      )}
 
-            <div className="card-overlay"></div>
+      {erro && (
+        <p>{erro}</p>
+      )}
 
-            <span className="objeto-categoria">
-              {objeto.categoria}
-            </span>
+      {!carregando && !erro && (
+        <section className="objetos-grid">
+          {objetosFiltrados.map((objeto) => (
+            <div
+              className="objeto-card"
+              key={objeto.id_card}
+            >
+              <img
+                src={objeto.imagem_url}
+                alt={objeto.titulo}
+              />
 
-            <div className="objeto-info">
-              <h2>{objeto.nome}</h2>
+              <div className="card-overlay"></div>
 
-              <p>{objeto.tipo}</p>
+              <span className="objeto-categoria">
+                {objeto.categoria}
+              </span>
 
-              <small>{objeto.distancia}</small>
+              <div className="objeto-info">
+                <h2>{objeto.titulo}</h2>
 
-              <button className="ver-btn">Ver →</button>
+                <p>{objeto.categoria}</p>
+
+                <small>
+                  {objeto.descricao}
+                </small>
+
+                <button className="ver-btn">
+                  Ver →
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </section>
+      )}
 
       <footer className="explorar-footer">
         © 2026 Cosmos Observatory
       </footer>
+
     </div>
   );
 }
